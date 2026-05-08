@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.isAuthenticated && !data.user.isAdmin) {
+        if (data.isAuthenticated) {
           setUser(data.user);
         } else {
           setUser(null);
