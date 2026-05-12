@@ -19,7 +19,7 @@ const SearchingAgentModal = ({ bookingId, onCancel }) => {
     if (status === 'WAITING' && !isTimeout) {
       timer = setInterval(() => {
         setSecondsElapsed(prev => {
-          if (prev >= 600) { // 10 minutes
+          if (prev >= 300) { // 5 minutes
             setIsTimeout(true);
             return prev;
           }
@@ -117,6 +117,7 @@ const SearchingAgentModal = ({ bookingId, onCancel }) => {
   }
 
   const isFound = status === 'ACCEPTED' || status === 'IN_PROGRESS' || status === 'COMPLETED';
+  const isFailed = status === 'FAILED';
   const isCompleted = status === 'COMPLETED';
 
   // Floating Minimized State
@@ -166,7 +167,27 @@ const SearchingAgentModal = ({ bookingId, onCancel }) => {
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 200, height: 200, background: isCompleted ? 'rgba(34, 197, 94, 0.2)' : isFound ? 'rgba(92, 98, 241, 0.2)' : 'rgba(92, 98, 241, 0.1)', filter: 'blur(60px)', borderRadius: '50%', zIndex: 0 }}></div>
 
           <div style={{ position: 'relative', zIndex: 1 }}>
-            {isTimeout ? (
+            {isFailed ? (
+              <>
+                <div style={{ width: 80, height: 80, background: 'rgba(239, 68, 68, 0.1)', borderRadius: '50%', margin: '0 auto 2rem auto', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid #EF4444' }}>
+                  <Search size={32} color="#EF4444" />
+                </div>
+                <h2 style={{ fontWeight: 800, fontSize: '1.8rem', marginBottom: '1rem', color: '#EF4444' }}>Email Not Sent</h2>
+                <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '2.5rem' }}>
+                  We encountered an error while notifying our agents. Please try again.
+                </p>
+                <button 
+                  onClick={onCancel}
+                  style={{ 
+                    width: '100%', background: '#EF4444', color: 'white', border: 'none', 
+                    padding: '1.2rem', borderRadius: '18px', fontSize: '1rem', 
+                    fontWeight: 900, cursor: 'pointer', boxShadow: '0 10px 25px rgba(239,68,68,0.3)'
+                  }}
+                >
+                  Go Back & Try Again
+                </button>
+              </>
+            ) : isTimeout ? (
               <>
                 <div style={{ width: 80, height: 80, background: 'rgba(239, 68, 68, 0.1)', borderRadius: '50%', margin: '0 auto 2rem auto', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid #EF4444' }}>
                   <Search size={32} color="#EF4444" />
