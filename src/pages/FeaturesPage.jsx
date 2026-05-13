@@ -97,8 +97,8 @@ const FeaturesPage = ({ onOpenAuth }) => {
             />
             {/* connector line (Mobile) */}
             <motion.div
-              className="show-mobile"
-              style={{ position: 'absolute', left: '50%', top: 38, bottom: 40, width: 3, background: 'var(--gradient-p)', zIndex: 0, originY: 0, transform: 'translateX(-50%)' }}
+              className="show-mobile mobile-live-line"
+              style={{ position: 'absolute', left: '50%', top: 38, bottom: 40, width: 3, zIndex: 0, originY: 0, transform: 'translateX(-50%)' }}
               initial={{ scaleY: 0 }}
               whileInView={{ scaleY: 1 }}
               viewport={{ once: true }}
