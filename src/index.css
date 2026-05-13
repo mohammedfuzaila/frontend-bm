@@ -268,8 +268,8 @@ img { max-width: 100%; height: auto; }
   border-bottom: 1px solid rgba(0,0,0,0.05);
   box-shadow: 0 10px 30px rgba(0,0,0,0.03);
 }
-.navbar.scrolled .nav-link { color: var(--dark) !important; }
-.navbar.scrolled .nav-link:hover { color: var(--primary) !important; }
+.navbar.scrolled .nav-link:not(.active) { color: var(--dark) !important; }
+.navbar.scrolled .nav-link:not(.active):hover { color: var(--primary) !important; }
 .navbar.scrolled .nav-brand { color: var(--dark) !important; }
 .nav-brand {
   font-size: 1.5rem; font-weight: 800; letter-spacing: -0.04em;
@@ -319,7 +319,7 @@ img { max-width: 100%; height: auto; }
 }
 .modal-content {
   background: white; border-radius: var(--r-lg);
-  padding: 2.5rem; width: 90%; max-width: 420px;
+  padding: 2.5rem; width: 90%; max-width: 540px;
   box-shadow: 0 25px 60px rgba(0,0,0,0.18);
   position: relative;
 }
