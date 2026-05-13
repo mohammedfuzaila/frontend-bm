@@ -15,21 +15,21 @@ const Contact = () => {
                 <Mail size={24} color="var(--primary)" />
                 <div>
                   <h4 style={{ fontWeight: 700, marginBottom: '0.25rem' }}>Email Us</h4>
-                  <p style={{ color: 'var(--text-muted)' }}>support@bachmates.com</p>
+                  <p style={{ color: 'var(--text-muted)' }}>anaikarmohammedfuzail57@gmail.com</p>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                 <Phone size={24} color="var(--primary)" />
                 <div>
                   <h4 style={{ fontWeight: 700, marginBottom: '0.25rem' }}>Call Us</h4>
-                  <p style={{ color: 'var(--text-muted)' }}>+1 (800) 123-4567</p>
+                  <p style={{ color: 'var(--text-muted)' }}>+91 88705 39407</p>
                 </div>
               </div>
               <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
                 <MapPin size={24} color="var(--primary)" />
                 <div>
                   <h4 style={{ fontWeight: 700, marginBottom: '0.25rem' }}>Headquarters</h4>
-                  <p style={{ color: 'var(--text-muted)' }}>Tech Hub Valley, Suite 400</p>
+                  <p style={{ color: 'var(--text-muted)' }}>Pernambut, Vellore Dist, Tamil Nadu</p>
                 </div>
               </div>
             </div>

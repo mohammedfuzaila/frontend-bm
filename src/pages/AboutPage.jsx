@@ -137,7 +137,7 @@ const AboutPage = () => (
         <motion.h2 className="h2" {...si()} style={{ textAlign: 'center', marginBottom: '3rem' }}>Get in <span style={{ color: 'var(--primary)' }}>Touch</span></motion.h2>
         <div style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap' }}>
           <motion.div {...si(0.1)} style={{ flex: '1 1 300px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {[{ icon: Mail, label: 'Email', val: 'support@bachmates.com' }, { icon: Phone, label: 'Phone', val: '+1 800 123 4567' }, { icon: MapPin, label: 'HQ', val: 'Tech City, Suite 400' }].map(({ icon: Icon, label, val }, i) => (
+            {[{ icon: Mail, label: 'Email', val: 'anaikarmohammedfuzail57@gmail.com' }, { icon: Phone, label: 'Phone', val: '+91 88705 39407' }, { icon: MapPin, label: 'HQ', val: 'Pernambut, Vellore Dist, Tamil Nadu' }].map(({ icon: Icon, label, val }, i) => (
               <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                 <div style={{ width: 44, height: 44, borderRadius: 12, background: 'rgba(92,98,241,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Icon size={20} color="var(--primary)" /></div>
                 <div><p style={{ fontWeight: 700, marginBottom: '0.15rem' }}>{label}</p><p style={{ color: 'var(--muted)' }}>{val}</p></div>

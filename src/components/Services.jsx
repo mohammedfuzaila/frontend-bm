@@ -12,12 +12,14 @@ const Services = ({ services, loading, onBook }) => {
           initial="hidden"
           whileInView="visible"
           viewport={viewportConfig}
+          style={{ textAlign: 'center', marginBottom: '4rem' }}
         >
-          <motion.h2 className="section-title" variants={staggerItem}>
-            Services Designed for Your Everyday Needs
+          <motion.span className="overline" variants={staggerItem} style={{ justifyContent: 'center' }}>Available Services</motion.span>
+          <motion.h2 className="h2" variants={staggerItem}>
+            Solutions for <span className="text-gradient">Everyday Needs</span>
           </motion.h2>
-          <motion.p className="section-subtitle" variants={staggerItem}>
-            Everything from quick tasks to complex home projects, handled by verified professionals.
+          <motion.p className="body-lg" variants={staggerItem} style={{ maxWidth: 600, margin: '1rem auto 0' }}>
+            From quick tasks to complex home projects, our verified professionals are ready to help.
           </motion.p>
         </motion.div>
 
@@ -38,34 +40,36 @@ const Services = ({ services, loading, onBook }) => {
             {services.map(service => (
               <motion.div
                 key={service.id}
-                className="glass-card"
+                className="card glow"
                 variants={staggerItem}
-                whileHover={{ y: -8, boxShadow: '0 24px 48px rgba(0,0,0,0.1)' }}
-                style={{ display: 'flex', flexDirection: 'column', cursor: 'pointer', background: 'white', border: '1px solid #E2E8F0', borderRadius: 20 }}
+                style={{ 
+                   display: 'flex', flexDirection: 'column', cursor: 'pointer', 
+                   padding: 0, overflow: 'hidden', border: '1px solid var(--border)' 
+                }}
               >
-                <div style={{ position: 'relative', height: 220, overflow: 'hidden' }}>
+                <div style={{ position: 'relative', height: 240, overflow: 'hidden' }}>
                   <motion.img
                     src={service.image_url}
                     alt={service.title}
                     style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.4 }}
+                    whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.6 }}
                   />
-                  <div style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'rgba(255,255,255,0.92)', backdropFilter: 'blur(8px)', padding: '0.4rem 0.9rem', borderRadius: 9999, fontWeight: 700, color: 'var(--primary)', fontSize: '0.9rem', boxShadow: '0 2px 8px rgba(0,0,0,0.1)' }}>
-                    ${service.price}
+                  <div style={{ position: 'absolute', top: '1.25rem', right: '1.25rem', background: 'rgba(255,255,255,0.95)', backdropFilter: 'blur(10px)', padding: '0.5rem 1.2rem', borderRadius: '14px', fontWeight: 900, color: 'var(--primary)', fontSize: '0.95rem', boxShadow: '0 8px 20px rgba(0,0,0,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}>
+                    ₹{service.price}
                   </div>
                 </div>
-                <div style={{ padding: '1.75rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 700, marginBottom: '0.65rem' }}>{service.title}</h3>
-                  <p style={{ color: 'var(--text-muted)', marginBottom: '1.75rem', flexGrow: 1, fontSize: '0.95rem', lineHeight: 1.6 }}>{service.description}</p>
+                <div style={{ padding: '2rem', display: 'flex', flexDirection: 'column', flexGrow: 1 }}>
+                  <h3 style={{ fontSize: '1.3rem', fontWeight: 900, marginBottom: '0.75rem', letterSpacing: '-0.02em' }}>{service.title}</h3>
+                  <p style={{ color: 'var(--muted)', marginBottom: '2rem', flexGrow: 1, fontSize: '0.95rem', lineHeight: 1.7 }}>{service.description}</p>
                   <motion.button
                     className="btn btn-primary"
-                    style={{ width: '100%', borderRadius: 12 }}
-                    whileHover={{ scale: 1.03, boxShadow: 'var(--shadow-primary)' }}
-                    whileTap={{ scale: 0.97 }}
+                    style={{ width: '100%', borderRadius: '14px', padding: '1rem' }}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
                     onClick={() => onBook(service)}
                   >
-                    <ShoppingBag size={16} /> Book Now
+                    <ShoppingBag size={18} /> Book This Service
                   </motion.button>
                 </div>
               </motion.div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import Footer from '../components/Footer';
-import { Mail, MessageCircle, Phone, MapPin, Send, MessageSquare, HeartHandshake } from 'lucide-react';
+import { Mail, MessageCircle, Phone, MapPin, Send, MessageSquare, Facebook, Twitter, Linkedin, Instagram } from 'lucide-react';
 
 const si = (delay = 0) => ({
   initial: { opacity: 0, y: 20 },
@@ -33,18 +33,18 @@ const ContactPage = () => {
 
       {/* Main Grid */}
       <section className="section" style={{ paddingTop: '1rem' }}>
-        <div className="page-wrapper" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3rem' }}>
+        <div className="page-wrapper" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '4rem' }}>
           
           {/* Left: Contact Info */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
             <motion.div {...si(0.1)} className="card" style={{ padding: '2rem' }}>
               <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center' }}>
                 <div style={{ width: 52, height: 52, borderRadius: '16px', background: 'var(--gradient-p)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', boxShadow: 'var(--shadow-primary)' }}>
-                  <MessageCircle size={24} />
+                  <Mail size={24} />
                 </div>
                 <div>
-                  <h3 style={{ fontWeight: 800, fontSize: '1.1rem', margin: '0 0 0.2rem 0' }}>Live Support</h3>
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--muted)' }}>Average response time: 2 mins</p>
+                  <h3 style={{ fontWeight: 800, fontSize: '1.1rem', margin: '0 0 0.2rem 0' }}>Email Address</h3>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--muted)' }}>anaikarmohammedfuzail57@gmail.com</p>
                 </div>
               </div>
             </motion.div>
@@ -52,11 +52,11 @@ const ContactPage = () => {
             <motion.div {...si(0.2)} className="card" style={{ padding: '2rem' }}>
               <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center' }}>
                 <div style={{ width: 52, height: 52, borderRadius: '16px', background: 'var(--gradient-p)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', boxShadow: 'var(--shadow-primary)' }}>
-                  <Mail size={24} />
+                  <Phone size={24} />
                 </div>
                 <div>
-                  <h3 style={{ fontWeight: 800, fontSize: '1.1rem', margin: '0 0 0.2rem 0' }}>General Inquiries</h3>
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--muted)' }}>hello@bachmates.com</p>
+                  <h3 style={{ fontWeight: 800, fontSize: '1.1rem', margin: '0 0 0.2rem 0' }}>Phone Number</h3>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--muted)' }}>+91 88705 39407</p>
                 </div>
               </div>
             </motion.div>
@@ -64,20 +64,24 @@ const ContactPage = () => {
             <motion.div {...si(0.3)} className="card" style={{ padding: '2rem' }}>
               <div style={{ display: 'flex', gap: '1.2rem', alignItems: 'center' }}>
                 <div style={{ width: 52, height: 52, borderRadius: '16px', background: 'var(--gradient-p)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'white', boxShadow: 'var(--shadow-primary)' }}>
-                  <HeartHandshake size={24} />
+                  <MapPin size={24} />
                 </div>
                 <div>
-                  <h3 style={{ fontWeight: 800, fontSize: '1.1rem', margin: '0 0 0.2rem 0' }}>Partnerships</h3>
-                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--muted)' }}>partners@bachmates.com</p>
+                  <h3 style={{ fontWeight: 800, fontSize: '1.1rem', margin: '0 0 0.2rem 0' }}>Headquarters</h3>
+                  <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--muted)' }}>Pernambut, Vellore Dist, Tamil Nadu</p>
                 </div>
               </div>
             </motion.div>
             
             {/* Visual Socials */}
             <motion.div {...si(0.4)} style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap' }}>
-               {['Instagram', 'Twitter', 'LinkedIn'].map((app, i) => (
-                 <div key={i} style={{ padding: '0.8rem 1.5rem', background: '#EDF1F7', borderRadius: '12px', fontSize: '0.85rem', fontWeight: 800, color: 'var(--dark)', cursor: 'pointer' }}>
-                   {app}
+               {[
+                 { icon: Instagram, label: 'Instagram' },
+                 { icon: Twitter, label: 'Twitter' },
+                 { icon: Linkedin, label: 'LinkedIn' }
+               ].map((s, i) => (
+                 <div key={i} style={{ width: 48, height: 48, background: '#EDF1F7', borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--dark)', cursor: 'pointer', transition: 'all 0.2s' }}>
+                   <s.icon size={20} />
                  </div>
                ))}
             </motion.div>
@@ -140,7 +144,7 @@ const ContactPage = () => {
               <h2 style={{ fontWeight: 900, fontSize: '2rem', marginBottom: '1rem', letterSpacing: '-0.03em', color: 'white' }}>Got questions? <br/>We have <span className="text-gradient">answers.</span></h2>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>Check out our Frequently Asked Questions to get quick help on common topics.</p>
            </div>
-           <button className="btn" style={{ background: 'var(--accent)', color: 'white', padding: '1.2rem 2.5rem', borderRadius: '20px', fontWeight: 900, fontSize: '1rem', border: 'none', boxShadow: '0 10px 25px rgba(245,158,11,0.3)' }}>
+           <button className="btn" style={{ background: 'var(--accent)', color: 'white', padding: '1.2rem 2.5rem', borderRadius: '20px', fontWeight: 900, fontSize: '1rem', border: 'none', boxShadow: '0 10px 25px rgba(245,158,11,0.3)', margin: '0 auto' }}>
              Browse FAQs
            </button>
         </div>

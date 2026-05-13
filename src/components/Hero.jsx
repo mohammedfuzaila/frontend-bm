@@ -7,8 +7,9 @@ const Hero = ({ onExplore, onBookNow }) => {
   return (
     <section id="home" className="section" style={{ minHeight: '92vh', display: 'flex', alignItems: 'center', paddingTop: '8rem', position: 'relative', overflow: 'hidden' }}>
       {/* Modern Background Mesh */}
-      <div style={{ position: 'absolute', top: '-20%', right: '-10%', width: '70vw', height: '70vw', background: 'radial-gradient(circle, rgba(99,102,241,0.1) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0, pointerEvents: 'none', filter: 'blur(80px)' }} />
-      <div style={{ position: 'absolute', bottom: '-30%', left: '-15%', width: '60vw', height: '60vw', background: 'radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0, pointerEvents: 'none', filter: 'blur(80px)' }} />
+      <div className="page-blob-1" style={{ opacity: 0.2 }} />
+      <div className="page-blob-2" style={{ opacity: 0.15 }} />
+      <div style={{ position: 'absolute', top: '10%', right: '5%', width: '40vw', height: '40vw', background: 'radial-gradient(circle, rgba(139,92,246,0.1) 0%, transparent 70%)', borderRadius: '50%', zIndex: 0, pointerEvents: 'none', filter: 'blur(100px)' }} />
 
       <div className="page-wrapper hero-wrapper" style={{ display: 'flex', alignItems: 'center', gap: '5rem', width: '100%', position: 'relative', zIndex: 1, flexWrap: 'wrap' }}>
 
@@ -21,12 +22,11 @@ const Hero = ({ onExplore, onBookNow }) => {
           animate="visible"
         >
           <motion.div
+            className="tag"
             style={{ 
               display: 'inline-flex', alignItems: 'center', gap: '0.6rem', 
-              background: 'rgba(99,102,241,0.08)', borderRadius: '14px', 
-              padding: '0.5rem 1.25rem', marginBottom: '2.5rem', 
-              border: '1px solid rgba(99,102,241,0.15)',
-              color: 'var(--primary)', fontWeight: 800, fontSize: '0.85rem'
+              marginBottom: '2.5rem', padding: '0.5rem 1.5rem',
+              fontSize: '0.85rem'
             }}
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}

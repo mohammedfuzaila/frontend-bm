@@ -75,13 +75,17 @@ const AuthModal = ({ onClose, initialMode = 'login' }) => {
         onClick={onClose}
       >
         <motion.div
-          className="modal-content"
+          className="modal-content auth-modal-content"
           initial={{ opacity: 0, scale: 0.9, y: 30 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.9, y: 30 }}
           transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           onClick={e => e.stopPropagation()}
-          style={{ width: '100%', maxWidth: isLogin ? '450px' : '520px', borderRadius: '32px' }}
+          style={{ 
+            width: '100%', maxWidth: isLogin ? '440px' : '560px', 
+            borderRadius: '32px', maxHeight: '92vh', overflowY: 'auto',
+            msOverflowStyle: 'none', scrollbarWidth: 'none'
+          }}
         >
           <motion.button className="close-btn" onClick={onClose} whileTap={{ scale: 0.9 }}>
             <X size={22} />
@@ -124,11 +128,11 @@ const AuthModal = ({ onClose, initialMode = 'login' }) => {
             )}
           </AnimatePresence>
 
-          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: isLogin ? '1fr' : 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+          <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: isLogin ? '1fr' : 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1rem' }}>
               
               {!isLogin && (
-                <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                <div className="form-group" style={{ gridColumn: '1 / -1' }}>
                   <label style={{ fontWeight: 800, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'block' }}>Full Name</label>
                   <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                     <User size={18} style={{ position: 'absolute', left: '1rem', color: '#94A3B8' }} />
@@ -137,7 +141,7 @@ const AuthModal = ({ onClose, initialMode = 'login' }) => {
                 </div>
               )}
 
-              <div className="form-group" style={{ gridColumn: 'span 2' }}>
+              <div className="form-group" style={{ gridColumn: '1 / -1' }}>
                 <label style={{ fontWeight: 800, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'block' }}>Email Address</label>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                   <Mail size={18} style={{ position: 'absolute', left: '1rem', color: '#94A3B8' }} />
@@ -164,7 +168,7 @@ const AuthModal = ({ onClose, initialMode = 'login' }) => {
                 </>
               )}
 
-              <div className="form-group" style={{ gridColumn: isLogin ? 'span 1' : 'span 2' }}>
+              <div className="form-group" style={{ gridColumn: isLogin ? 'span 1' : '1 / -1' }}>
                 <label style={{ fontWeight: 800, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'block' }}>Password</label>
                 <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                   <KeyRound size={18} style={{ position: 'absolute', left: '1rem', color: '#94A3B8' }} />
@@ -173,7 +177,7 @@ const AuthModal = ({ onClose, initialMode = 'login' }) => {
               </div>
 
               {!isLogin && (
-                <div className="form-group" style={{ gridColumn: 'span 2' }}>
+                <div className="form-group" style={{ gridColumn: '1 / -1' }}>
                   <label style={{ fontWeight: 800, fontSize: '0.85rem', marginBottom: '0.5rem', display: 'block' }}>Confirm Password</label>
                   <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
                     <KeyRound size={18} style={{ position: 'absolute', left: '1rem', color: '#94A3B8' }} />
