@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin } from 'lucide-react';
 const Footer = () => (
   <footer style={{ background: 'var(--dark)', color: 'white', padding: '6rem 6% 3rem', marginTop: '6rem', position: 'relative', overflow: 'hidden' }}>
     {/* Footer Glow */}
-    <div style={{ position: 'absolute', top: '-20%', left: '30%', width: '40%', height: '100%', background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
+    <div className="hide-mobile" style={{ position: 'absolute', top: '-20%', left: '30%', width: '40%', height: '100%', background: 'radial-gradient(circle, rgba(99,102,241,0.15) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
     <div className="page-wrapper">
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px,1fr))', gap: '4rem', marginBottom: '4rem', position: 'relative', zIndex: 1 }}>
@@ -17,7 +17,7 @@ const Footer = () => (
           <p style={{ color: 'rgba(255,255,255,0.5)', lineHeight: 1.8, marginBottom: '2rem', maxWidth: 280, fontSize: '0.95rem' }}>
             The ultimate lifestyle companion for modern bachelors. We simplify your daily routines so you can focus on what matters.
           </p>
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             {['Fb', 'Tw', 'Li', 'Ig'].map((s, i) => (
               <motion.a 
                 key={i} href="#" 

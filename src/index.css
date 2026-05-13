@@ -265,7 +265,7 @@ img { max-width: 100%; height: auto; }
   border-bottom: 1px solid rgba(255,255,255,0.1);
   box-shadow: 0 4px 30px rgba(0,0,0,0.15);
 }
-.navbar.scrolled .nav-link { color: rgba(255,255,255,0.7) !important; }
+.navbar.scrolled .nav-link { color: white !important; }
 .navbar.scrolled .nav-link:hover { color: white !important; }
 .navbar.scrolled .text-gradient { filter: brightness(1.2); }
 .nav-brand {

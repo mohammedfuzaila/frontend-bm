@@ -22,11 +22,22 @@ const HowItWorks = () => {
         </motion.div>
 
         <div style={{ position: 'relative' }}>
-          {/* Connector line */}
+          {/* Connector line (Desktop) */}
           <motion.div
+            className="hide-mobile"
             style={{ position: 'absolute', top: 40, left: '8%', right: '8%', height: 2, background: 'linear-gradient(to right, var(--primary), var(--secondary))', zIndex: 0, originX: 0 }}
             initial={{ scaleX: 0 }}
             whileInView={{ scaleX: 1 }}
+            viewport={viewportConfig}
+            transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+          />
+
+          {/* Connector line (Mobile) */}
+          <motion.div
+            className="show-mobile"
+            style={{ position: 'absolute', left: '50%', top: 40, bottom: 40, width: 2, background: 'linear-gradient(to bottom, var(--primary), var(--secondary))', zIndex: 0, originY: 0, transform: 'translateX(-50%)' }}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
             viewport={viewportConfig}
             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
           />

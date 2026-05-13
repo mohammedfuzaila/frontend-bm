@@ -74,7 +74,7 @@ const ContactPage = () => {
             </motion.div>
             
             {/* Visual Socials */}
-            <motion.div {...si(0.4)} style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+            <motion.div {...si(0.4)} style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap' }}>
                {['Instagram', 'Twitter', 'LinkedIn'].map((app, i) => (
                  <div key={i} style={{ padding: '0.8rem 1.5rem', background: '#EDF1F7', borderRadius: '12px', fontSize: '0.85rem', fontWeight: 800, color: 'var(--dark)', cursor: 'pointer' }}>
                    {app}
@@ -87,13 +87,13 @@ const ContactPage = () => {
           <motion.div 
             {...si(0.2)} 
             style={{ 
-              background: 'white', borderRadius: '40px', padding: '3.5rem', 
+              background: 'white', borderRadius: 'clamp(24px, 5vw, 40px)', padding: 'clamp(1.5rem, 5vw, 3.5rem)', 
               boxShadow: '0 30px 60px rgba(92,98,241,0.06)', border: '1px solid #F1F5F9' 
             }}
           >
             <h3 style={{ fontWeight: 900, fontSize: '1.8rem', marginBottom: '2.5rem', letterSpacing: '-0.04em' }}>Send a message</h3>
             <form onSubmit={(e) => { e.preventDefault(); alert("Message sent! We'll get back to you soon.") }}>
-               <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
                   <div className="form-group">
                     <label style={{ color: '#64748B', fontWeight: 800 }}>Full Name</label>
                     <input type="text" placeholder="e.g. John Doe" style={{ borderRadius: '16px', background: '#F8FAFC', padding: '1.1rem' }} required />
@@ -135,8 +135,8 @@ const ContactPage = () => {
 
       {/* FAQ Link Section */}
       <section className="section" style={{ paddingBottom: '8rem' }}>
-        <div className="page-wrapper dark-section" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem' }}>
-           <div style={{ maxWidth: 460 }}>
+        <div className="page-wrapper dark-section" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem', textAlign: 'center' }}>
+           <div style={{ maxWidth: 460, margin: '0 auto' }}>
               <h2 style={{ fontWeight: 900, fontSize: '2rem', marginBottom: '1rem', letterSpacing: '-0.03em', color: 'white' }}>Got questions? <br/>We have <span className="text-gradient">answers.</span></h2>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontWeight: 500 }}>Check out our Frequently Asked Questions to get quick help on common topics.</p>
            </div>

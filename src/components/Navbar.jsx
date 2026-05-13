@@ -51,7 +51,7 @@ const Navbar = ({ onOpenAuth, onOpenProfile }) => {
               className={({ isActive }) => `nav-link${isActive ? ' active' : ''}`}
               style={({ isActive }) => ({ 
                 fontWeight: 800, fontSize: '0.95rem', position: 'relative', transition: '0.2s',
-                color: isActive ? 'transparent' : (scrolled ? 'rgba(255,255,255,0.7)' : 'var(--dark)'),
+                color: isActive ? 'transparent' : (scrolled ? 'white' : 'var(--dark)'),
                 background: isActive ? 'var(--gradient-p)' : 'none',
                 WebkitBackgroundClip: isActive ? 'text' : 'none',
               })}
@@ -121,7 +121,7 @@ const Navbar = ({ onOpenAuth, onOpenProfile }) => {
           whileTap={{ scale: 0.9 }}
           onClick={() => setMobileOpen(true)}
         >
-          <Menu size={28} color="var(--dark)" />
+          <Menu size={28} color={scrolled ? "white" : "var(--dark)"} />
         </motion.button>
       </motion.nav>
 
