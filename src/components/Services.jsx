@@ -29,7 +29,7 @@ const Services = ({ services, loading, onBook }) => {
           </div>
         ) : (
           <motion.div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(310px,1fr))', gap: '2.5rem' }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(min(100%, 310px), 1fr))', gap: '2.5rem', justifyItems: 'center' }}
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"

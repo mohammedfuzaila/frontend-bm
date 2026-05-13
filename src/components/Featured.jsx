@@ -12,10 +12,10 @@ const Featured = ({ services, onBook }) => {
         <h2 className="section-title">Popular Services Near You</h2>
         <p className="section-subtitle">Our most booked daily solutions, trusted by thousands of users in your area.</p>
         
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '3rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))', gap: '2.5rem' }}>
           {featured.map(service => (
-            <div key={service.id} className="glass-card" style={{ display: 'flex', border: '1px solid #E2E8F0' }}>
-              <img src={service.image_url} alt={service.title} style={{ width: '150px', objectFit: 'cover' }} />
+            <div key={service.id} className="glass-card featured-card" style={{ border: '1px solid #E2E8F0', overflow: 'hidden' }}>
+              <img src={service.image_url} alt={service.title} style={{ width: '160px', objectFit: 'cover' }} />
               <div style={{ padding: '1.5rem', flexGrow: 1, display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem' }}>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: 700 }}>{service.title}</h3>

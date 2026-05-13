@@ -83,16 +83,26 @@ const FeaturesPage = ({ onOpenAuth }) => {
       {/* How It Works */}
       <section className="section" style={{ background: 'rgba(92,98,241,0.04)' }}>
         <div className="page-wrapper">
-          <motion.span className="overline" {...si()} style={{ display: 'block', textAlign: 'center' }}>STEP-BY-STEP</motion.span>
+          <motion.span className="overline" {...si()} style={{ justifyContent: 'center' }}>STEP-BY-STEP</motion.span>
           <motion.h2 className="h2" {...si(0.1)} style={{ textAlign: 'center', marginBottom: '3rem' }}>
             How <span style={{ color: 'var(--primary)' }}>It Works</span>
           </motion.h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '1.5rem', position: 'relative' }}>
-            {/* connector line */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '1.5rem', position: 'relative', justifyItems: 'center' }}>
+            {/* connector line (Desktop) */}
             <motion.div
+              className="hide-mobile"
               style={{ position: 'absolute', top: 38, left: '8%', right: '8%', height: 3, background: 'var(--gradient-p)', originX: 0, zIndex: 0 }}
               initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
               viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4 }}
+            />
+            {/* connector line (Mobile) */}
+            <motion.div
+              className="show-mobile"
+              style={{ position: 'absolute', left: '50%', top: 38, bottom: 40, width: 3, background: 'var(--gradient-p)', zIndex: 0, originY: 0, transform: 'translateX(-50%)' }}
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
             />
             {steps.map((s, i) => (
               <motion.div key={i}
@@ -119,7 +129,7 @@ const FeaturesPage = ({ onOpenAuth }) => {
         <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'radial-gradient(circle at 20% 30%, rgba(99,102,241,0.15), transparent 70%)', pointerEvents: 'none' }}></div>
         <div className="page-wrapper">
           <div style={{ textAlign: 'center', marginBottom: '5rem' }}>
-            <motion.span className="overline" {...si()} style={{ color: '#A5B4FC', display: 'block' }}>MODERN EXPERIENCE</motion.span>
+            <motion.span className="overline" {...si()} style={{ color: '#A5B4FC', justifyContent: 'center' }}>MODERN EXPERIENCE</motion.span>
             <motion.h2 className="h2" {...si(0.1)} style={{ color: 'white', fontWeight: 950, marginBottom: '1.5rem' }}>
               How can we use <span className="text-gradient">this app?</span>
             </motion.h2>

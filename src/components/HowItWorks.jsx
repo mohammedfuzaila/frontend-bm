@@ -35,7 +35,7 @@ const HowItWorks = () => {
           {/* Connector line (Mobile) */}
           <motion.div
             className="show-mobile"
-            style={{ position: 'absolute', left: '50%', top: 40, bottom: 40, width: 2, background: 'linear-gradient(to bottom, var(--primary), var(--secondary))', zIndex: 0, originY: 0, transform: 'translateX(-50%)' }}
+            style={{ position: 'absolute', left: '50%', top: 40, bottom: 40, width: 3, background: 'linear-gradient(to bottom, var(--primary), var(--secondary))', zIndex: 0, originY: 0, transform: 'translateX(-50%)' }}
             initial={{ scaleY: 0 }}
             whileInView={{ scaleY: 1 }}
             viewport={viewportConfig}
@@ -43,7 +43,7 @@ const HowItWorks = () => {
           />
 
           <motion.div
-            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '2rem', position: 'relative', zIndex: 1 }}
+            style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(240px,1fr))', gap: '2rem', position: 'relative', zIndex: 1, justifyItems: 'center' }}
             variants={staggerContainer}
             initial="hidden"
             whileInView="visible"

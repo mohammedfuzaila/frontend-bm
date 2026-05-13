@@ -18,10 +18,9 @@ const ContactPage = () => {
       {/* Header */}
       <section className="section" style={{ paddingTop: '5rem', paddingBottom: '3rem' }}>
         <div className="page-wrapper" style={{ textAlign: 'center' }}>
-          <motion.div {...si(0)} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'var(--surface2)', padding: '0.4rem 1.2rem', borderRadius: '50px', marginBottom: '2rem', border: '1px solid var(--border)' }}>
-            <MessageSquare size={16} color="var(--primary)" />
-            <span style={{ fontSize: '0.8rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '0.02em' }}>WE'RE ALWAYS LISTENING</span>
-          </motion.div>
+          <motion.span className="overline" {...si(0)} style={{ justifyContent: 'center' }}>
+            WE'RE ALWAYS LISTENING
+          </motion.span>
           <motion.h1 className="h1" {...si(0.1)} style={{ fontWeight: 950, letterSpacing: '-0.05em', fontSize: 'clamp(2.5rem, 5vw, 4rem)' }}>
             How can we <span className="text-gradient">help you?</span>
           </motion.h1>
