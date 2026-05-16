@@ -53,8 +53,8 @@ const SearchingAgentModal = ({ bookingId, onCancel }) => {
         setBookingDetails(data);
         setStatus(data.status);
 
-        // Auto-expand if completed
-        if (data.status === 'COMPLETED' && isMinimized) {
+        // Auto-expand if agent found or completed
+        if (['ACCEPTED', 'IN_PROGRESS', 'COMPLETED'].includes(data.status) && isMinimized) {
           setIsMinimized(false);
         }
 
@@ -167,7 +167,12 @@ const SearchingAgentModal = ({ bookingId, onCancel }) => {
           {/* Background Glow */}
           <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%, -50%)', width: 200, height: 200, background: isCompleted ? 'rgba(34, 197, 94, 0.2)' : isFound ? 'rgba(92, 98, 241, 0.2)' : 'rgba(92, 98, 241, 0.1)', filter: 'blur(60px)', borderRadius: '50%', zIndex: 0 }}></div>
 
-           <div style={{ position: 'relative', zIndex: 1 }}>
+           <motion.div 
+             key={status}
+             initial={{ opacity: 0, scale: 0.95 }}
+             animate={{ opacity: 1, scale: 1 }}
+             style={{ position: 'relative', zIndex: 1 }}
+           >
             {isTimeout ? (
               <>
                 <div style={{ width: 80, height: 80, background: 'rgba(239, 68, 68, 0.1)', borderRadius: '50%', margin: '0 auto 2rem auto', display: 'flex', alignItems: 'center', justifyContent: 'center', border: '2px solid #EF4444' }}>
@@ -367,7 +372,7 @@ const SearchingAgentModal = ({ bookingId, onCancel }) => {
                 </div>
               </>
             )}
-          </div>
+           </motion.div>
         </motion.div>
       </motion.div>
     </AnimatePresence>
