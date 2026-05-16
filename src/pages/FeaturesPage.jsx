@@ -56,7 +56,7 @@ const FeaturesPage = ({ onOpenAuth }) => {
       {/* Feature Cards */}
       <section className="section" style={{ paddingTop: '2rem' }}>
         <div className="page-wrapper">
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
             {feats.map((f, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, y: 24 }}
@@ -164,7 +164,7 @@ const FeaturesPage = ({ onOpenAuth }) => {
             </motion.p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', gap: '2rem' }}>
             
             {/* Visual Card 1 */}
             <motion.div {...si(0.3)} style={{ background: 'rgba(255,255,255,0.03)', borderRadius: 32, padding: '3rem', border: '1px solid rgba(255,255,255,0.08)', position: 'relative', overflow: 'hidden' }}>
@@ -208,17 +208,17 @@ const FeaturesPage = ({ onOpenAuth }) => {
           <motion.div 
             {...si(0.6)}
             style={{ 
-              marginTop: '5rem', background: 'linear-gradient(90deg, var(--primary), var(--accent))', 
-              borderRadius: 32, padding: '4rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' 
+              marginTop: 'clamp(3rem, 10vw, 5rem)', background: 'linear-gradient(90deg, var(--primary), var(--accent))', 
+              borderRadius: 'clamp(24px, 5vw, 32px)', padding: 'clamp(2rem, 6vw, 4rem)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' 
             }}
           >
-            <div style={{ flex: '1 1 400px' }}>
-              <h3 style={{ fontSize: '2.2rem', fontWeight: 950, color: 'white', marginBottom: '1rem', lineHeight: 1.1 }}>Ready to simplify <br/>your life?</h3>
-              <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem' }}>Join 12,000+ users who have upgraded their daily routine.</p>
+            <div style={{ flex: '1 1 min(100%, 400px)', textAlign: window.innerWidth < 768 ? 'center' : 'left' }}>
+              <h3 style={{ fontSize: 'clamp(1.5rem, 5vw, 2.2rem)', fontWeight: 950, color: 'white', marginBottom: '1rem', lineHeight: 1.1 }}>Ready to simplify <br/>your life?</h3>
+              <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: 'clamp(0.95rem, 2vw, 1.1rem)' }}>Join 12,000+ users who have upgraded their daily routine.</p>
             </div>
             <button 
               className="btn" 
-              style={{ background: 'white', color: 'var(--primary)', padding: '1.2rem 2.5rem', borderRadius: 20, fontSize: '1.1rem', fontWeight: 900 }}
+              style={{ background: 'white', color: 'var(--primary)', padding: '1.2rem 2.5rem', borderRadius: 20, fontSize: '1rem', fontWeight: 900, width: window.innerWidth < 500 ? '100%' : 'auto' }}
               onClick={handleGetStarted}
             >
               {user ? 'Explore Services' : 'Get Started Now'}

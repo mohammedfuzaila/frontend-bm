@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { AuthContext } from '../context/AuthContext';
 import Footer from '../components/Footer';
-import { ArrowRight, Zap, Play, Star, ShieldCheck, CheckCircle2, Plus, ArrowUpRight, TrendingUp, Sparkles, CheckCircle } from 'lucide-react';
+import { ArrowRight, Zap, Play, Star, ShieldCheck, Plus, ArrowUpRight, TrendingUp, Sparkles } from 'lucide-react';
 
 const si = (delay = 0) => ({
   initial: { opacity: 0, y: 15 },
@@ -79,26 +79,26 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
       <div className="spinning" style={{ position: 'absolute', bottom: '20%', right: '15%', width: 180, height: 180, background: 'var(--gradient-p)', opacity: 0.03, borderRadius: '40%', filter: 'blur(50px)', zIndex: 0 }}></div>
 
       {/* ── HERO ─────────────────────────────────── */}
-      <section className="section" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center', paddingTop: '2rem', position: 'relative', zIndex: 1 }}>
-        <div className="page-wrapper" style={{ display: 'flex', gap: '3rem', alignItems: 'center', flexWrap: 'wrap' }}>
+      <section className="section" style={{ minHeight: '90vh', display: 'flex', alignItems: 'center', padding: 'clamp(2rem, 10vw, 6rem) 0', position: 'relative', zIndex: 1 }}>
+        <div className="page-wrapper" style={{ display: 'flex', gap: 'clamp(2rem, 5vw, 4rem)', alignItems: 'center', flexWrap: 'wrap', justifyContent: 'center' }}>
           
           {/* Left Text */}
-          <div style={{ flex: '1 1 540px' }}>
-            <motion.div {...si(0)} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', background: 'var(--surface)', padding: '0.4rem 1rem', borderRadius: '50px', border: '1px solid var(--border)', width: 'fit-content', marginBottom: '2rem', boxShadow: 'var(--shadow-sm)' }}>
+          <div style={{ flex: '1 1 500px', minWidth: 'min(100%, 500px)', textAlign: window.innerWidth < 768 ? 'center' : 'left' }}>
+            <motion.div {...si(0)} style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', background: 'var(--surface)', padding: '0.4rem 1rem', borderRadius: '50px', border: '1px solid var(--border)', width: 'fit-content', marginBottom: '2rem', boxShadow: 'var(--shadow-sm)', margin: window.innerWidth < 768 ? '0 auto 2rem auto' : '0 0 2rem 0' }}>
               <span style={{ fontSize: '0.75rem', fontWeight: 900, color: 'var(--primary)', letterSpacing: '0.05em' }}>NEW UPDATE</span>
               <span style={{ width: 1, height: 12, background: 'var(--border)' }}></span>
               <span style={{ fontSize: '0.8rem', color: 'var(--muted)', fontWeight: 600 }}>Tracking is now live</span>
             </motion.div>
 
-            <motion.h1 className="display" {...si(0.1)} style={{ fontSize: 'clamp(2.8rem, 7vw, 5rem)', fontWeight: 950, letterSpacing: '-0.06em', lineHeight: 0.9 }}>
+            <motion.h1 className="display" {...si(0.1)} style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)', fontWeight: 950, letterSpacing: '-0.06em', lineHeight: 1.1 }}>
               Your Daily <br/>Life, <span className="hl">Optimized</span>.
             </motion.h1>
 
-            <motion.p className="body-lg" style={{ marginTop: '1.8rem', marginBottom: '2.8rem', maxWidth: 520, fontSize: '1.25rem', color: 'var(--muted)', fontWeight: 500 }} {...si(0.2)}>
+            <motion.p className="body-lg" style={{ marginTop: '1.8rem', marginBottom: '2.8rem', maxWidth: 520, fontSize: 'clamp(1rem, 1.5vw, 1.25rem)', color: 'var(--muted)', fontWeight: 500, marginInline: window.innerWidth < 768 ? 'auto' : '0' }} {...si(0.2)}>
               The all-in-one service platform for bachelors and students. Book anything, track everything.
             </motion.p>
 
-            <motion.div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap' }} {...si(0.3)}>
+            <motion.div style={{ display: 'flex', gap: '1.2rem', flexWrap: 'wrap', justifyContent: window.innerWidth < 768 ? 'center' : 'flex-start' }} {...si(0.3)}>
               <motion.button 
                 className="btn btn-primary" 
                 style={{ borderRadius: '18px', padding: '1.2rem 2.4rem', fontSize: '1.1rem', fontWeight: 800, boxShadow: '0 12px 30px rgba(92,98,241,0.3)' }} 
@@ -121,7 +121,7 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
             </motion.div>
 
             {/* Micro proof */}
-            <motion.div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '3.5rem' }} {...si(0.4)}>
+            <motion.div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginTop: '3.5rem', justifyContent: window.innerWidth < 768 ? 'center' : 'flex-start', flexWrap: 'wrap' }} {...si(0.4)}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                  <div style={{ display: 'flex', color: 'var(--accent)' }}>
                    {[...Array(5)].map((_,i) => <Star key={i} size={16} fill="var(--accent)" />)}
@@ -135,7 +135,11 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
 
           {/* Right Bento Hero */}
           <motion.div 
-            style={{ flex: '1 1 450px', position: 'relative', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}
+            style={{ 
+              flex: '1 1 400px', position: 'relative', display: 'grid', 
+              gridTemplateColumns: window.innerWidth < 480 ? '1fr' : '1fr 1fr', 
+              gap: '1rem', width: '100%' 
+            }}
             initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}
           >
              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -158,7 +162,7 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
                    <p style={{ margin: 0, fontSize: '0.8rem', opacity: 0.8, position: 'relative' }}>Orders fulfilled this month across India.</p>
                 </motion.div>
              </div>
-             <div style={{ paddingTop: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+             <div style={{ paddingTop: window.innerWidth < 480 ? '0' : '2.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
                 <motion.div 
                   whileHover={{ y: -5 }} className="glow"
                   style={{ background: 'var(--surface)', borderRadius: '24px', padding: '1.5rem', boxShadow: 'var(--shadow-sm)', border: '1px solid var(--border)' }}
@@ -176,7 +180,7 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
                    <p style={{ margin: '0 0 1rem 0', fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', fontWeight: 700 }}>RECENT ACTIVITY</p>
                     <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                        <div className="dot-anim" style={{ width: 8, height: 8, borderRadius: '50%', background: '#22C55E' }}></div>
-                       <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{latestService.title || 'Ready'} - {latestService.status || 'Live'}</span>
+                       <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{(latestService?.title) || 'Ready'} - {(latestService?.status) || 'Live'}</span>
                     </div>
                 </motion.div>
              </div>
@@ -185,14 +189,14 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
       </section>
 
       {/* ── TOP CATEGORIES ENHANCED ──────────────── */}
-      <section className="section" style={{ background: 'white', paddingTop: '6rem', paddingBottom: '6rem' }}>
+      <section className="section" style={{ background: 'white', padding: 'clamp(4rem, 8vw, 8rem) 0' }}>
         <div className="page-wrapper">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '3.5rem', flexWrap: 'wrap', gap: '1.5rem' }}>
             <motion.div {...si()}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: 'var(--primary)', fontWeight: 800, fontSize: '0.85rem', marginBottom: '0.5rem', letterSpacing: '0.1em' }}>
                  <TrendingUp size={16} /> POPULAR NOW
               </div>
-              <h2 className="h2" style={{ fontWeight: 950, letterSpacing: '-0.04em', margin: 0 }}>Explore <span style={{ color: 'var(--primary)' }}>Top Categories</span></h2>
+              <h2 className="h2" style={{ fontWeight: 950, letterSpacing: '-0.04em', margin: 0, fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}>Explore <span style={{ color: 'var(--primary)' }}>Top Categories</span></h2>
             </motion.div>
             <motion.button 
               {...si(0.1)} 
@@ -203,7 +207,7 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
             </motion.button>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', gap: '1.5rem' }}>
              {categories.map((cat, idx) => (
                 <motion.div 
                   key={cat.id} 
@@ -212,7 +216,7 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
                   style={{ 
                     borderRadius: '28px', padding: '2rem', cursor: 'pointer', border: '1px solid #F1F5F9',
                     background: idx === 0 ? 'var(--primary-light)' : 'white',
-                    display: 'flex', flexDirection: 'column', height: '240px', justifyContent: 'space-between',
+                    display: 'flex', flexDirection: 'column', height: 'auto', minHeight: '240px', justifyContent: 'space-between',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.02)', position: 'relative', overflow: 'hidden'
                   }} 
                   onClick={() => navigate('/services')}
@@ -226,7 +230,7 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
                          <Zap size={22} color="var(--primary)" />
                       </div>
                       <h3 style={{ fontWeight: 900, fontSize: '1.4rem', margin: '0 0 0.5rem 0' }}>{cat.name}</h3>
-                      <p style={{ color: '#64748B', fontSize: '0.9rem', lineHeight: 1.5, margin: 0 }}>The highest rated {cat.name.toLowerCase()} experts in town.</p>
+                      <p style={{ color: '#64748B', fontSize: '0.9rem', lineHeight: 1.5, margin: '0 0 1.5rem 0' }}>The highest rated {(cat.name || 'Service').toLowerCase()} experts in town.</p>
                    </div>
                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 800, color: 'var(--primary)', fontSize: '0.85rem' }}>
                       Browse Catalog <ArrowRight size={14} />
@@ -239,7 +243,7 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
                className="card" 
                style={{ 
                  borderRadius: '28px', padding: '2rem', border: '2px dashed #E2E8F0', background: 'transparent',
-                 display: 'flex', flexDirection: 'column', height: '240px', justifyContent: 'center', alignItems: 'center', textAlign: 'center'
+                 display: 'flex', flexDirection: 'column', height: 'auto', minHeight: '240px', justifyContent: 'center', alignItems: 'center', textAlign: 'center'
                }}
              >
                 <div style={{ width: 48, height: 48, borderRadius: '50%', border: '2px solid #E2E8F0', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '1rem', color: '#64748B' }}>
@@ -254,24 +258,24 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
 
       {/* ── FEATURED SERVICES STICKY VERTICAL ────────── */}
       {featuredServices.length > 0 && (
-        <section className="section" style={{ background: '#F8F9FF', paddingTop: '8rem', paddingBottom: '8rem' }}>
-          <div className="page-wrapper" style={{ display: 'flex', gap: '4rem', flexWrap: 'wrap' }}>
+        <section className="section" style={{ background: '#F8F9FF', padding: 'clamp(4rem, 10vw, 10rem) 0' }}>
+          <div className="page-wrapper" style={{ display: 'flex', gap: 'clamp(2rem, 5vw, 4rem)', flexWrap: 'wrap' }}>
             
             {/* Sticky Title */}
-            <div className="sticky-desktop" style={{ flex: '1 1 300px', height: 'fit-content' }}>
+            <div style={{ flex: '1 1 300px', height: 'fit-content', position: window.innerWidth > 1024 ? 'sticky' : 'relative', top: '100px' }}>
               <motion.div {...si()} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#F5A623', fontWeight: 800, fontSize: '0.85rem', marginBottom: '1rem', letterSpacing: '0.1em' }}>
                  <Sparkles size={16} fill="#F5A623" /> TOP RATED PICKS
               </motion.div>
-              <motion.h2 className="h2" {...si(0.1)} style={{ fontWeight: 950, letterSpacing: '-0.04em', lineHeight: 1.1, fontSize: '3rem' }}>
+              <motion.h2 className="h2" {...si(0.1)} style={{ fontWeight: 950, letterSpacing: '-0.04em', lineHeight: 1.1, fontSize: 'clamp(2rem, 6vw, 3.5rem)' }}>
                 Featured <br/><span style={{ color: 'var(--primary)' }}>Daily Essentials</span>
               </motion.h2>
-              <motion.p {...si(0.2)} style={{ color: 'var(--muted)', marginTop: '1.5rem', fontSize: '1.1rem', maxWidth: '280px' }}>
+              <motion.p {...si(0.2)} style={{ color: 'var(--muted)', marginTop: '1.5rem', fontSize: '1.1rem', maxWidth: '380px' }}>
                 Hand-picked services verified for quality and speed.
               </motion.p>
             </div>
 
-            {/* Vertical Scroll Effect Cards */}
-            <div style={{ flex: '2 1 600px', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
+            {/* Vertical Cards */}
+            <div style={{ flex: '2 1 600px', display: 'flex', flexDirection: 'column', gap: '3rem', width: '100%' }}>
               {featuredServices.map((service, idx) => (
                 <motion.div 
                   key={service.id} 
@@ -282,22 +286,23 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
                   style={{ 
                     background: 'white', borderRadius: '40px', overflow: 'hidden', 
                     boxShadow: '0 30px 70px rgba(0,0,0,0.04)', border: '1px solid #F1F5F9',
-                    display: 'flex', flexDirection: 'row', flexWrap: 'wrap', minHeight: '320px'
+                    display: 'flex', flexDirection: window.innerWidth < 768 ? 'column' : 'row', 
+                    minHeight: window.innerWidth < 768 ? 'auto' : '320px', width: '100%'
                   }}
                   whileHover={{ y: -5 }}
                 >
-                  <div style={{ flex: '1 1 300px', height: '320px', overflow: 'hidden' }}>
+                  <div style={{ flex: '1 1 300px', height: window.innerWidth < 768 ? '240px' : '320px', overflow: 'hidden' }}>
                     <img src={service.image_url} alt={service.title} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                   </div>
-                  <div style={{ flex: '1 1 300px', padding: '2.5rem', display: 'flex', flexDirection: 'column' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
+                  <div style={{ flex: '1 1 300px', padding: 'clamp(1.5rem, 5vw, 2.5rem)', display: 'flex', flexDirection: 'column' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem', flexWrap: 'wrap', gap: '0.5rem' }}>
                       <h3 style={{ fontWeight: 950, fontSize: '1.6rem', margin: 0, letterSpacing: '-0.02em' }}>{service.title}</h3>
                       <div style={{ fontWeight: 950, color: 'var(--primary)', fontSize: '1.4rem' }}>₹{service.price}</div>
                     </div>
                     <p style={{ color: '#64748B', fontSize: '1rem', lineHeight: 1.6, marginBottom: '2.5rem', flex: 1 }}>{service.description}</p>
                     <motion.button 
                       className="btn btn-primary" 
-                      style={{ width: 'fit-content', borderRadius: '18px', padding: '1.1rem 2rem', fontWeight: 900 }}
+                      style={{ width: '100%', maxWidth: window.innerWidth < 768 ? '100%' : 'fit-content', borderRadius: '18px', padding: '1.1rem 2rem', fontWeight: 900 }}
                       whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}
                       onClick={() => handleBookNow(service)}
                     >
@@ -312,25 +317,23 @@ const HomePage = ({ onOpenAuth, onBookAction, onBookingCreated }) => {
       )}
 
       {/* ── LIVE TRACKING PREVIEW ─────────────────── */}
-      <section className="section" style={{ position: 'relative', zIndex: 1, paddingBottom: '8rem' }}>
-        <div style={{ maxWidth: '1000px', margin: '0 auto', background: '#0E1629', borderRadius: '40px', padding: '5rem 4rem', color: 'white', textAlign: 'center', overflow: 'hidden', position: 'relative' }}>
+      <section className="section" style={{ position: 'relative', zIndex: 1, padding: 'clamp(4rem, 8vw, 8rem) 0' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', background: '#0E1629', borderRadius: 'clamp(20px, 5vw, 40px)', padding: 'clamp(2.5rem, 10vw, 5rem) clamp(1.5rem, 5vw, 4rem)', color: 'white', textAlign: 'center', overflow: 'hidden', position: 'relative' }}>
           <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'radial-gradient(circle at top right, rgba(92,98,241,0.2), transparent 60%)' }}></div>
-          <motion.h2 className="h2" {...si()} style={{ color: 'white', fontWeight: 900, marginBottom: '1.5rem' }}>Experience <span style={{ color: 'var(--accent)' }}>Real-Time</span> Magic</motion.h2>
-          <motion.p {...si(0.1)} style={{ color: 'rgba(255,255,255,0.6)', maxWidth: 640, margin: '0 auto 4rem auto', fontSize: '1.1rem' }}>No more guessing where your help is. Live GPS tracking and instant chat with your assigned agent for every single order.</motion.p>
+          <motion.h2 className="h2" {...si()} style={{ color: 'white', fontWeight: 950, marginBottom: '1.5rem', fontSize: 'clamp(1.8rem, 5vw, 3rem)' }}>Experience <span style={{ color: 'var(--accent)' }}>Real-Time</span> Magic</motion.h2>
+          <motion.p {...si(0.1)} style={{ color: 'rgba(255,255,255,0.6)', maxWidth: 640, margin: '0 auto 4rem auto', fontSize: 'clamp(0.95rem, 1.2vw, 1.1rem)', lineHeight: 1.6 }}>No more guessing where your help is. Live GPS tracking and instant chat with your assigned agent for every single order.</motion.p>
           
-          <motion.div {...si(0.2)} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2rem' }}>
-             <div style={{ background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '24px' }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>📍</div>
-                <p style={{ fontWeight: 800 }}>Live GPS</p>
-             </div>
-             <div style={{ background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '24px' }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>💬</div>
-                <p style={{ fontWeight: 800 }}>Instant Chat</p>
-             </div>
-             <div style={{ background: 'rgba(255,255,255,0.05)', padding: '2rem', borderRadius: '24px' }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>⏰</div>
-                <p style={{ fontWeight: 800 }}>On-Time Guarantee</p>
-             </div>
+          <motion.div {...si(0.2)} style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))', gap: '1.5rem' }}>
+             {[
+               { icon: '📍', label: 'Live GPS' },
+               { icon: '💬', label: 'Instant Chat' },
+               { icon: '⏰', label: 'On-Time Guarantee' }
+             ].map((item, idx) => (
+               <div key={idx} style={{ background: 'rgba(255,255,255,0.05)', padding: '2.5rem 1.5rem', borderRadius: '24px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                  <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{item.icon}</div>
+                  <p style={{ fontWeight: 800, margin: 0, fontSize: '1.1rem' }}>{item.label}</p>
+               </div>
+             ))}
           </motion.div>
         </div>
       </section>

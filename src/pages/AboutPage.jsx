@@ -134,24 +134,24 @@ const AboutPage = () => (
     {/* Contact */}
     <section className="section" style={{ paddingBottom: 'clamp(4rem, 10vw, 6rem)' }}>
       <div className="page-wrapper">
-        <motion.h2 className="h2" {...si()} style={{ textAlign: 'center', marginBottom: '3rem', fontSize: 'clamp(1.8rem, 5vw, 2.5rem)' }}>Get in <span style={{ color: 'var(--primary)' }}>Touch</span></motion.h2>
+        <motion.h2 className="h2" {...si()} style={{ textAlign: 'center', marginBottom: 'clamp(2rem, 5vw, 3rem)', fontSize: 'clamp(1.8rem, 5vw, 2.5rem)' }}>Get in <span style={{ color: 'var(--primary)' }}>Touch</span></motion.h2>
         <div style={{ display: 'flex', gap: 'clamp(2rem, 5vw, 4rem)', flexWrap: 'wrap', justifyContent: 'center' }}>
-          <motion.div {...si(0.1)} style={{ flex: '1 1 280px', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+          <motion.div {...si(0.1)} style={{ flex: '1 1 min(100%, 300px)', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {[{ icon: Mail, label: 'Email', val: 'anaikarmohammedfuzail57@gmail.com' }, { icon: Phone, label: 'Phone', val: '+91 88705 39407' }, { icon: MapPin, label: 'HQ', val: 'Pernambut, Vellore Dist, Tamil Nadu' }].map(({ icon: Icon, label, val }, i) => (
               <div key={i} style={{ display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
                 <div style={{ width: 44, height: 44, borderRadius: 12, background: 'rgba(92,98,241,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}><Icon size={20} color="var(--primary)" /></div>
-                <div><p style={{ fontWeight: 700, marginBottom: '0.15rem' }}>{label}</p><p style={{ color: 'var(--muted)', fontSize: '0.9rem', wordBreak: 'break-word' }}>{val}</p></div>
+                <div style={{ overflow: 'hidden' }}><p style={{ fontWeight: 800, marginBottom: '0.15rem', fontSize: '1rem' }}>{label}</p><p style={{ color: 'var(--muted)', fontSize: '0.9rem', wordBreak: 'break-word', margin: 0 }}>{val}</p></div>
               </div>
             ))}
           </motion.div>
-          <motion.div {...si(0.2)} style={{ flex: '1 1 320px', maxWidth: '600px', background: 'white', borderRadius: 28, padding: 'clamp(1.5rem, 5vw, 2.5rem)', border: '1px solid rgba(92,98,241,0.1)' }}>
+          <motion.div {...si(0.2)} style={{ flex: '1 1 min(100%, 340px)', maxWidth: '600px', background: 'white', borderRadius: '28px', padding: 'clamp(1.5rem, 5vw, 2.5rem)', border: '1px solid rgba(92,98,241,0.1)', boxShadow: '0 10px 30px rgba(0,0,0,0.02)' }}>
             <form onSubmit={e => e.preventDefault()}>
               <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
-                <div className="form-group" style={{ flex: '1 1 200px' }}><label>Name</label><input type="text" placeholder="Your name" /></div>
-                <div className="form-group" style={{ flex: '1 1 200px' }}><label>Email</label><input type="email" placeholder="your@email.com" /></div>
+                <div className="form-group" style={{ flex: '1 1 min(100%, 200px)' }}><label style={{ fontWeight: 800 }}>Name</label><input type="text" placeholder="Your name" style={{ borderRadius: '12px' }} /></div>
+                <div className="form-group" style={{ flex: '1 1 min(100%, 200px)' }}><label style={{ fontWeight: 800 }}>Email</label><input type="email" placeholder="your@email.com" style={{ borderRadius: '12px' }} /></div>
               </div>
-              <div className="form-group"><label>Message</label><textarea rows="4" placeholder="How can we help?" style={{ resize: 'vertical' }}></textarea></div>
-              <motion.button type="submit" className="btn btn-primary" style={{ width: '100%', borderRadius: 12, padding: '1rem' }} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>Send Message</motion.button>
+              <div className="form-group" style={{ marginBottom: '1.5rem' }}><label style={{ fontWeight: 800 }}>Message</label><textarea rows="4" placeholder="How can we help?" style={{ resize: 'none', borderRadius: '12px' }}></textarea></div>
+              <motion.button type="submit" className="btn btn-primary" style={{ width: '100%', borderRadius: 14, padding: '1.1rem', fontWeight: 900 }} whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>Send Message</motion.button>
             </form>
           </motion.div>
         </div>

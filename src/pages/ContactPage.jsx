@@ -119,13 +119,13 @@ const ContactPage = () => {
       </section>
 
       {/* FAQ Link Section */}
-      <section className="section" style={{ paddingBottom: 'clamp(4rem, 15vw, 8rem)' }}>
-        <div className="page-wrapper dark-section" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: '3rem', textAlign: 'center', flexDirection: 'column' }}>
+      <section className="section" style={{ paddingBottom: 'clamp(4rem, 10vw, 8rem)', paddingTop: 0 }}>
+        <div className="page-wrapper dark-section" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexWrap: 'wrap', gap: 'clamp(2rem, 5vw, 3rem)', textAlign: 'center', flexDirection: 'column', padding: 'clamp(3rem, 8vw, 5rem) clamp(1.5rem, 5vw, 3rem)', borderRadius: 'clamp(24px, 5vw, 40px)' }}>
            <div style={{ maxWidth: 500 }}>
-              <h2 style={{ fontWeight: 900, fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', marginBottom: '1rem', letterSpacing: '-0.03em', color: 'white' }}>Got questions? <br/>We have <span className="text-gradient">answers.</span></h2>
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontWeight: 500, fontSize: 'clamp(0.95rem, 3vw, 1.1rem)' }}>Check out our Frequently Asked Questions to get quick help on common topics.</p>
+              <h2 style={{ fontWeight: 950, fontSize: 'clamp(1.8rem, 5vw, 2.5rem)', marginBottom: '1rem', letterSpacing: '-0.03em', color: 'white', lineHeight: 1.1 }}>Got questions? <br/>We have <span className="text-gradient">answers.</span></h2>
+              <p style={{ color: 'rgba(255,255,255,0.7)', fontWeight: 500, fontSize: 'clamp(0.95rem, 2.5vw, 1.1rem)', lineHeight: 1.6 }}>Check out our Frequently Asked Questions to get quick help on common topics.</p>
            </div>
-           <button className="btn" style={{ background: 'var(--accent)', color: 'white', padding: '1.2rem 2.5rem', borderRadius: '20px', fontWeight: 900, fontSize: '1rem', border: 'none', boxShadow: '0 10px 25px rgba(245,158,11,0.3)' }}>
+           <button className="btn" style={{ background: 'var(--accent)', color: 'white', padding: '1.2rem 2.5rem', borderRadius: '20px', fontWeight: 900, fontSize: '1rem', border: 'none', boxShadow: '0 10px 25px rgba(245,158,11,0.3)', width: window.innerWidth < 500 ? '100%' : 'auto' }}>
              Browse FAQs
            </button>
         </div>
