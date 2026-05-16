@@ -369,8 +369,13 @@ img { max-width: 100%; height: auto; }
   background: transparent;
 }
 
-.auth-modal-content::-webkit-scrollbar {
+.auth-modal-content::-webkit-scrollbar,
+.no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 
 @media (max-width: 768px) {
@@ -395,8 +400,8 @@ img { max-width: 100%; height: auto; }
     to bottom,
     transparent,
     transparent 10px,
-    var(--primary) 10px,
-    var(--primary) 20px
+    #6366F1 10px,
+    #F59E0B 20px
   );
   background-size: 100% 40px;
   animation: flowLine 2s linear infinite;
@@ -405,6 +410,23 @@ img { max-width: 100%; height: auto; }
 @keyframes flowLine {
   from { background-position: 0 0; }
   to { background-position: 0 40px; }
+}
+
+@keyframes flowLineHorizontal {
+  from { background-position: 0 0; }
+  to { background-position: 40px 0; }
+}
+
+.desktop-live-line {
+  background: repeating-linear-gradient(
+    to right,
+    transparent,
+    transparent 10px,
+    #6366F1 10px,
+    #F59E0B 20px
+  );
+  background-size: 40px 100%;
+  animation: flowLineHorizontal 2s linear infinite;
 }
 
 /* Featured Card Responsive */

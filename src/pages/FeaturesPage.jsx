@@ -25,7 +25,7 @@ const steps = [
   { num: '01', title: 'Choose Service', desc: 'Browse our range of daily services.' },
   { num: '02', title: 'Request Booking', desc: 'Submit your request with one tap.' },
   { num: '03', title: 'Agent Accepts', desc: 'A local professional picks it up instantly.' },
-  { num: '04', title: 'Service Done ✅', desc: 'Track, verify, and complete with ease.' },
+  { num: '04', title: 'Service Done', desc: 'Track, verify, and complete with ease.', isLast: true },
 ];
 
 const FeaturesPage = ({ onOpenAuth }) => {
@@ -81,45 +81,71 @@ const FeaturesPage = ({ onOpenAuth }) => {
       </section>
 
       {/* How It Works */}
-      <section className="section" style={{ background: 'rgba(92,98,241,0.04)' }}>
+      <section className="section" style={{ background: 'rgba(92,98,241,0.04)', paddingBottom: '10rem', overflow: 'hidden' }}>
         <div className="page-wrapper">
           <motion.span className="overline" {...si()} style={{ justifyContent: 'center' }}>STEP-BY-STEP</motion.span>
-          <motion.h2 className="h2" {...si(0.1)} style={{ textAlign: 'center', marginBottom: '3rem' }}>
+          <motion.h2 className="h2" {...si(0.1)} style={{ textAlign: 'center', marginBottom: '5rem' }}>
             How <span style={{ color: 'var(--primary)' }}>It Works</span>
           </motion.h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: '1.5rem', position: 'relative', justifyItems: 'center' }}>
-            {/* connector line (Desktop) */}
+
+          {/* DESKTOP VIEW */}
+          <div className="hide-mobile" style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '2rem', position: 'relative', justifyItems: 'center' }}>
             <motion.div
-              className="hide-mobile"
-              style={{ position: 'absolute', top: 38, left: '8%', right: '8%', height: 3, background: 'var(--gradient-p)', originX: 0, zIndex: 0 }}
-              initial={{ scaleX: 0 }} whileInView={{ scaleX: 1 }}
-              viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4 }}
-            />
-            {/* connector line (Mobile) */}
-            <motion.div
-              className="show-mobile mobile-live-line"
-              style={{ position: 'absolute', left: '50%', top: 38, bottom: 40, width: 3, zIndex: 0, originY: 0, transform: 'translateX(-50%)' }}
-              initial={{ scaleY: 0 }}
-              whileInView={{ scaleY: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.4 }}
+              className="desktop-live-line"
+              style={{ position: 'absolute', top: 40, left: '12.5%', right: '12.5%', height: 3, opacity: 0.4, zIndex: 0 }}
+              initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+              viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.4 }}
             />
             {steps.map((s, i) => (
               <motion.div key={i}
                 initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.12 }}
-                style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}
+                style={{ textAlign: 'center', position: 'relative', zIndex: 1, maxWidth: '240px' }}
               >
                 <motion.div
-                  style={{ width: 76, height: 76, borderRadius: '50%', background: i === 3 ? 'var(--gradient-p)' : 'white', border: '2.5px solid var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem', fontWeight: 900, fontSize: '1.2rem', color: i === 3 ? 'white' : 'var(--primary)', boxShadow: '0 4px 20px rgba(92,98,241,0.15)' }}
-                  whileHover={{ scale: 1.1, boxShadow: '0 8px 28px rgba(92,98,241,0.25)' }}
+                  style={{ width: 80, height: 80, borderRadius: '50%', background: i === 3 ? 'var(--gradient-p)' : 'white', border: '2.5px solid var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 2.5rem', fontWeight: 900, fontSize: '1.3rem', color: i === 3 ? 'white' : 'var(--primary)', boxShadow: '0 8px 30px rgba(92,98,241,0.15)' }}
+                  whileHover={{ scale: 1.1, boxShadow: '0 12px 35px rgba(92,98,241,0.25)' }}
                 >
                   {s.num}
                 </motion.div>
-                <h3 style={{ fontWeight: 800, fontSize: '1.1rem', marginBottom: '0.5rem' }}>{s.title}</h3>
-                <p style={{ color: 'var(--muted)', fontSize: '0.9rem' }}>{s.desc}</p>
+                <h3 style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: '0.8rem', color: 'var(--dark)' }}>{s.title}</h3>
+                <p style={{ color: 'var(--muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>{s.desc}</p>
               </motion.div>
             ))}
+          </div>
+
+          {/* MOBILE VIEW - Vertical Timeline Style */}
+          <div className="show-mobile" style={{ position: 'relative' }}>
+            {/* Main vertical line - Perfectly centered with 48px circles */}
+            <motion.div
+              className="mobile-live-line"
+              style={{ position: 'absolute', left: '24px', top: '24px', bottom: '24px', width: '2.5px', opacity: 0.4, zIndex: 0, transform: 'translateX(-50%)' }}
+              initial={{ scaleY: 0 }} whileInView={{ scaleY: 1 }}
+              viewport={{ once: true }} transition={{ duration: 1.2, delay: 0.4 }}
+            />
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4rem' }}>
+              {steps.map((s, i) => (
+                <motion.div key={i}
+                  initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }} transition={{ duration: 0.5, delay: i * 0.12 }}
+                  style={{ display: 'flex', alignItems: 'flex-start', gap: '1.5rem', position: 'relative', zIndex: 1 }}
+                >
+                  {/* Step Circle - 48px wide, center is at 24px */}
+                  <div style={{ flexShrink: 0, width: 48, height: 48, borderRadius: '50%', background: i === 3 ? 'var(--gradient-p)' : 'white', border: '2.5px solid var(--primary)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: '0.95rem', color: i === 3 ? 'white' : 'var(--primary)', boxShadow: '0 4px 15px rgba(92,98,241,0.15)' }}>
+                    {s.num}
+                  </div>
+                  
+                  {/* Step Content */}
+                  <div style={{ textAlign: 'left', paddingTop: '0.4rem' }}>
+                    <h3 style={{ fontWeight: 800, fontSize: '1.2rem', marginBottom: '0.5rem', color: 'var(--dark)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                      {s.title} {s.isLast && <BadgeCheck size={20} color="#22C55E" />}
+                    </h3>
+                    <p style={{ color: 'var(--muted)', fontSize: '0.95rem', lineHeight: 1.6 }}>{s.desc}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
